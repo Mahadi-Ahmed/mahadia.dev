@@ -3,8 +3,11 @@ new domain for personal website
 
 TODO:
 - [x] Add astro
-- [] Add stage deployment 
-- [] deploy old website to prod
+- [x] Add stage deployment 
+- [x] deploy old website to prod
+- [] add a navbar
+- [] add styling, colors, fonts, background
+- [] add a photos page
 
 # Astro Starter Kit: Basics
 
