@@ -5,7 +5,7 @@ TODO:
 - [x] Add astro
 - [x] Add stage deployment 
 - [x] deploy old website to prod
-- [] add a navbar
+- [x] add a navbar
 - [] add styling, colors, fonts, background
 - [] add a photos page
 

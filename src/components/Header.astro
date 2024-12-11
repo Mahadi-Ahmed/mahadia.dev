@@ -1,0 +1,52 @@
+---
+import { Github, Mail } from "lucide-astro";
+---
+
+<header>
+  <nav class="nav-container">
+    <div class="nav-items">
+      <a href="/" class="logo-link">
+        <img src="/ma-logo.svg" alt="MA Logo" class="logo" />
+      </a>
+      <a href="/">Home</a>
+      <a href="/gallery">Gallery</a>
+      <div class="icon-group">
+        <a href="mailto:mahadia.dev@gmail.com" target="_blank">
+          <Mail />
+        </a>
+        <a href="https://github.com/Mahadi-Ahmed" target="_blank">
+          <Github />
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .nav-container {
+    color: white;
+  }
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding: 1rem;
+    gap: 2rem;
+  }
+
+  .logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-group {
+    display: flex;
+    gap: 1em;
+  }
+</style>

@@ -2692,6 +2692,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucide-astro@npm:^0.468.0":
+  version: 0.468.0
+  resolution: "lucide-astro@npm:0.468.0"
+  peerDependencies:
+    astro: ">=2.7.1"
+  checksum: 10c0/082beddbceb85a6c2d4e17539c0ec3d0de8aa70234441c4c32e689fcc8c2b056f30ee72150e8a3e357e92e02e50bc166eb20bf5c6652e8e5142a0e84fb061a08
+  languageName: node
+  linkType: hard
+
 "magic-string@npm:^0.30.14":
   version: 0.30.15
   resolution: "magic-string@npm:0.30.15"
@@ -4033,6 +4042,7 @@ __metadata:
   dependencies:
     "@astrojs/check": "npm:0.9.4"
     astro: "npm:5.0.4"
+    lucide-astro: "npm:^0.468.0"
     prettier: "npm:^3.3.3"
     prettier-plugin-astro: "npm:^0.14.1"
     typescript: "npm:^5.5.4"
