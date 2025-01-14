@@ -8,8 +8,10 @@ import { Github, Mail } from "lucide-astro";
       <a href="/" class="logo-link">
         <img src="/ma-logo.svg" alt="MA Logo" class="logo" />
       </a>
-      <a href="/">Home</a>
-      <a href="/gallery">Gallery</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/gallery">Gallery</a>
+      </div>
       <div class="icon-group">
         <a href="mailto:mahadia.dev@gmail.com" target="_blank">
           <Mail />
@@ -24,20 +26,27 @@ import { Github, Mail } from "lucide-astro";
 
 <style>
   .nav-container {
+    display: flex;
     color: white;
   }
 
   .nav-items {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     margin: auto;
     padding: 1rem;
-    gap: 2rem;
   }
 
   .logo {
     height: 40px;
     width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.5rem;
   }
 
   .logo-link {
@@ -48,5 +57,9 @@ import { Github, Mail } from "lucide-astro";
   .icon-group {
     display: flex;
     gap: 1em;
+  }
+
+  a {
+    color: white;
   }
 </style>
