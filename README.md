@@ -6,8 +6,10 @@ TODO:
 - [x] Add stage deployment 
 - [x] deploy old website to prod
 - [x] add a navbar
-- [] add styling, colors, fonts, background
+- [x] add tailwind, shadcn
 - [x] add a photos page
+- [] Choose font, fix typography
+- [] create components for photos
 
 # Astro Starter Kit: Basics
 
