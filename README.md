@@ -7,7 +7,7 @@ TODO:
 - [x] deploy old website to prod
 - [x] add a navbar
 - [] add styling, colors, fonts, background
-- [] add a photos page
+- [x] add a photos page
 
 # Astro Starter Kit: Basics
 
