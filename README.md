@@ -9,7 +9,7 @@ TODO:
 - [x] add tailwind, shadcn
 - [x] add a photos page
 - [x] Choose font, fix typography
-- [] refactor to use tailwindcss in rest of components
+- [x] refactor to use tailwindcss in rest of components
 - [] create components for photos
 
 # Astro Starter Kit: Basics

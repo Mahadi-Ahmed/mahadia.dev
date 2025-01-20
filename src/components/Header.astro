@@ -3,16 +3,16 @@ import { Github, Mail } from "lucide-astro";
 ---
 
 <header>
-  <nav class="nav-container">
-    <div class="nav-items">
-      <a href="/" class="logo-link">
-        <img src="/ma-logo.svg" alt="MA Logo" class="logo" />
+  <nav class="flex">
+    <div class="flex items-center justify-between w-full m-auto p-4">
+      <a href="/" class="flex items-center">
+        <img src="/ma-logo.svg" alt="MA Logo" class="h-10 w-auto" />
       </a>
-      <div class="nav-links">
+      <div class="flex gap-2">
         <a href="/">Home</a>
         <a href="/gallery">Gallery</a>
       </div>
-      <div class="icon-group">
+      <div class="flex gap-4 text-current">
         <a href="mailto:mahadia.dev@gmail.com" target="_blank">
           <Mail />
         </a>
@@ -23,43 +23,3 @@ import { Github, Mail } from "lucide-astro";
     </div>
   </nav>
 </header>
-
-<style>
-  .nav-container {
-    display: flex;
-    color: white;
-  }
-
-  .nav-items {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: auto;
-    padding: 1rem;
-  }
-
-  .logo {
-    height: 40px;
-    width: auto;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .logo-link {
-    display: flex;
-    align-items: center;
-  }
-
-  .icon-group {
-    display: flex;
-    gap: 1em;
-  }
-
-  a {
-    color: white;
-  }
-</style>
