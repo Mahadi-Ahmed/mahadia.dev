@@ -1,55 +1,64 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
 const images = [
   {
-    src: '/gallery/bali-1/bali-1.jpg',
-    alt: 'Bali rice field'
+    src: "/gallery/bali-1/bali-1.jpg",
+    alt: "Bali rice field",
   },
   {
-    src: '/gallery/sing-1/sing-3.jpg',
-    alt: 'sing'
+    src: "/gallery/sing-1/sing-3.jpg",
+    alt: "sing",
   },
   {
-    src: '/gallery/sing-1/sing-1.jpg',
-    alt: 'sing hawker center'
+    src: "/gallery/sing-1/sing-1.jpg",
+    alt: "sing hawker center",
   },
   {
-    src: '/gallery/sing-3/001757290027.jpg',
-    alt: 'basketball reflection'
+    src: "/gallery/sing-3/001757290027.jpg",
+    alt: "basketball reflection",
   },
   {
-    src: '/gallery/sing-4/R11-07555-0027.jpg',
-    alt: 'sing temple'
+    src: "/gallery/sing-4/R11-07555-0027.jpg",
+    alt: "sing temple",
   },
   {
-    src: '/gallery/sthlm-mara-24/sthlm-mara-04.jpg',
-    alt: 'abstract eyes'
+    src: "/gallery/sthlm-mara-24/sthlm-mara-04.jpg",
+    alt: "abstract eyes",
   },
   {
-    src: '/gallery/sing-2/sing-2.jpg',
-    alt: 'singapore building'
+    src: "/gallery/sing-2/sing-2.jpg",
+    alt: "singapore building",
   },
   {
-    src: '/gallery/india-3/DSCF7152.jpg',
-    alt: 'india wall'
+    src: "/gallery/india-3/DSCF7152.jpg",
+    alt: "india wall",
   },
   {
-    src: '/gallery/india-2/DSCF7157.jpg',
-    alt: 'india wall'
-  }
-
-]
+    src: "/gallery/india-2/DSCF7157.jpg",
+    alt: "india wall",
+  },
+];
 ---
 
 <Layout title="Mahadi Ahmed - Gallery">
-  <main class="max-w-7xl mx-auto px-6 py-12">
-    <h1 class="text-4xl font-bold tracking-tight mb-8">Gallery</h1>
+  <main class="max-w-9xl mx-auto px-6 py-12">
+    <h1 class="font-outfit text-4xl font-bold tracking-tight mb-8">
+      Gallery
+    </h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
       {images.map((image) => (
-      <div>
-        <img src={image.src} alt={image.alt} class="object-cover w-full h-full">
-      </div>
+        <div class="break-inside-avoid bg-card hover:shadow-lg transition-shadow">
+          <div class="p-4">
+            <div class="relative overflow-hidden rounded-md">
+              <img
+                src={image.src}
+                alt={image.alt}
+                class="w-full h-auto rounded-md"
+              />
+            </div>
+          </div>
+        </div>
       ))}
     </div>
   </main>

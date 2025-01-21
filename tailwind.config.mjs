@@ -8,6 +8,10 @@ export default {
         outfit: ['Outfit', 'sans-serif'],
         space: ['Space Grotesk', 'sans-serif'],
       },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem'
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
