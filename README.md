@@ -10,7 +10,12 @@ TODO:
 - [x] add a photos page
 - [x] Choose font, fix typography
 - [x] refactor to use tailwindcss in rest of components
-- [] create components for photos
+- [x] create components for photos
+- [x] add photos to the gallery in a grid
+- [x] clicking photo should open a modal
+- [] add carousel to view photos in a clicked post in modal
+- [] deploy astro version
+- [] Optimizations 
 
 # Astro Starter Kit: Basics
 
