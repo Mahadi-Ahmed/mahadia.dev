@@ -12,12 +12,12 @@ command = "yarn build"
 NODE_VERSION = "23.6.1"
 YARN_VERSION = "4.6.0"
 
-# Production environment variables
+# Production environment variables - not actually being used
 [env.production]
 ASTRO_SITE_URL = "https://mahadia.dev"
 
 # Development environment variables
-[env.development]
+[env.preview]
 ASTRO_SITE_URL = "http://localhost:4321"
 
 # Optional but recommended asset processing settings
