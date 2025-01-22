@@ -3,15 +3,10 @@ name = "mahadia-dev"
 pages_build_output_dir = "dist"
 compatibility_date = "2024-07-24"
 
-# Environment variables configuration
-[env]
-production = { }
-  [env.production.vars]
-  NODE_VERSION = "23.6.1"
-  YARN_VERSION = "4.6.0"
+[env.production.vars]
+NODE_VERSION = "23.6.1"
+YARN_VERSION = "4.6.0"
 
-# Preview environment (formerly development)
-[env.preview]
-  [env.preview.vars]
-  NODE_VERSION = "23.6.1"
-  YARN_VERSION = "4.6.0"
+[env.preview.vars]
+NODE_VERSION = "23.6.1"
+YARN_VERSION = "4.6.0"
