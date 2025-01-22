@@ -1,43 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-const images = [
-  {
-    src: "/gallery/bali-1/bali-1.jpg",
-    alt: "Bali rice field",
-  },
-  {
-    src: "/gallery/sing-1/sing-3.jpg",
-    alt: "sing",
-  },
-  {
-    src: "/gallery/sing-1/sing-1.jpg",
-    alt: "sing hawker center",
-  },
-  {
-    src: "/gallery/sing-3/001757290027.jpg",
-    alt: "basketball reflection",
-  },
-  {
-    src: "/gallery/sing-4/R11-07555-0027.jpg",
-    alt: "sing temple",
-  },
-  {
-    src: "/gallery/sthlm-mara-24/sthlm-mara-04.jpg",
-    alt: "abstract eyes",
-  },
-  {
-    src: "/gallery/sing-2/sing-2.jpg",
-    alt: "singapore building",
-  },
-  {
-    src: "/gallery/india-3/DSCF7152.jpg",
-    alt: "india wall",
-  },
-  {
-    src: "/gallery/india-2/DSCF7157.jpg",
-    alt: "india wall",
-  },
-];
+import { posts } from "@/content/gallery";
 ---
 
 <Layout title="Mahadi Ahmed - Gallery">
@@ -47,13 +10,13 @@ const images = [
     </h1>
 
     <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-      {images.map((image) => (
+      {posts.map((post) => (
         <div class="break-inside-avoid bg-card hover:shadow-lg transition-shadow">
           <div class="p-4">
             <div class="relative overflow-hidden rounded-md">
               <img
-                src={image.src}
-                alt={image.alt}
+                src={post.images[0].src}
+                alt={post.images[0].alt}
                 class="w-full h-auto rounded-md"
               />
             </div>
