@@ -14,7 +14,7 @@ TODO:
 - [x] add photos to the gallery in a grid
 - [x] clicking photo should open a modal
 - [] add carousel to view photos in a clicked post in modal
-- [] deploy astro version
+- [x] deploy astro version
 - [] Optimizations 
 
 # Astro Starter Kit: Basics

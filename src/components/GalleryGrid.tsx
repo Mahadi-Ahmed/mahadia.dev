@@ -30,14 +30,16 @@ const GalleryGrid = ({ posts }: Props) => {
       </div>
 
       <Dialog open={selectedPost !== null} onOpenChange={() => setSelectedPost(null)}>
-        <DialogContent className="max-w-[95vw] h-[90vh] p-0 bg-background/85">
+        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90 overflow-hidden">
           {selectedPost && (
-            <div className="flex items-center justify-center h-full">
-              <img
-                src={selectedPost.images[0].src}
-                alt={selectedPost.images[0].alt}
-                className="max-h-[85vh] max-w-[90vw] object-contain"
-              />
+            <div className="relative w-full h-full flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <img
+                  src={selectedPost.images[0].src}
+                  alt={selectedPost.images[0].alt}
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
+                />
+              </div>
             </div>
           )}
         </DialogContent>
