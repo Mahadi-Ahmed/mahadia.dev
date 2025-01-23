@@ -13,7 +13,7 @@ TODO:
 - [x] create components for photos
 - [x] add photos to the gallery in a grid
 - [x] clicking photo should open a modal
-- [] add carousel to view photos in a clicked post in modal
+- [x] add carousel to view photos in a clicked post in modal
 - [x] deploy astro version
 - [] Optimizations 
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import type { CarouselApi } from "@/components/ui/carousel"
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import useEmblaCarousel from 'embla-carousel-react';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import type { GalleryPost } from '@/content/gallery/types';
 
@@ -10,20 +10,24 @@ interface Props {
 
 const GalleryGrid = ({ posts }: Props) => {
   const [selectedPost, setSelectedPost] = useState<GalleryPost | null>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    if (emblaApi) {
-      emblaApi.on('select', () => {
-        setSelectedIndex(emblaApi.selectedScrollSnap());
-      });
+    if (!api) return;
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  // Reset current index when modal opens/closes
+  useEffect(() => {
+    setCurrent(0);
+    if (api) {
+      api.scrollTo(0);
     }
-  }, [emblaApi]);
-
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [selectedPost]);
+  }, [selectedPost, api]);
 
   return (
     <>
@@ -49,10 +53,7 @@ const GalleryGrid = ({ posts }: Props) => {
         <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90">
           {selectedPost && (
             <div className="w-full h-full flex flex-col items-center justify-center">
-              <Carousel
-                ref={emblaRef}
-                className="w-full"
-              >
+              <Carousel setApi={setApi}>
                 <CarouselContent>
                   {selectedPost.images.map((image, index) => (
                     <CarouselItem key={index}>
@@ -72,9 +73,10 @@ const GalleryGrid = ({ posts }: Props) => {
                 {selectedPost.images.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => emblaApi?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${index === selectedIndex ? 'bg-white' : 'bg-white/50'
-                      }`}
+                    onClick={() => api?.scrollTo(index)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === current ? 'bg-white' : 'bg-white/50'
+                    }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
