@@ -4,12 +4,12 @@ export const post: GalleryPost = {
   id: 'india-1',
   images: [
     {
-      src: '/gallery/india-1/DSCF6524.JPG',
-      alt: 'hawa mehel'
+      src: 'india-1/DSCF5950.jpg',
+      alt: 'tuk tuk'
     },
     {
-      src: '/gallery/india-1/DSCF5950.JPG',
-      alt: 'deli tuk tuk'
+      src: 'india-1/DSCF7908.jpg',
+      alt: 'framed tuk tuk'
     },
   ]
 }

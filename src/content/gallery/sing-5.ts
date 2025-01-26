@@ -4,7 +4,7 @@ export const post: GalleryPost = {
   id: 'sing-5',
   images: [
     {
-      src: '/gallery/sing-5/R10-07554-0023.JPG',
+      src: 'sing-5/R10-07554-0023.jpg',
       alt: 'abstract window'
     },
   ]

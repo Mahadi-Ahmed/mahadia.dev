@@ -4,7 +4,7 @@ export const post: GalleryPost = {
   id: 'sthlm-3',
   images: [
     {
-      src: '/gallery/sthlm-3/DSCF2922.JPG',
+      src: 'sthlm-3/DSCF2907.jpg',
       alt: 'architecture'
     },
   ]

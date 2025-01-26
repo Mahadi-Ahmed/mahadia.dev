@@ -40,7 +40,7 @@ const GalleryGrid = ({ posts }: Props) => {
           >
             <div className="p-2">
               <img
-                src={post.images[0].src}
+                src={`${import.meta.env.PUBLIC_R2_URL}/${post.images[0].src}`}
                 alt={post.images[0].alt}
                 className="w-full h-auto rounded-md"
               />
@@ -59,7 +59,7 @@ const GalleryGrid = ({ posts }: Props) => {
                     <CarouselItem key={index}>
                       <div className="flex items-center justify-center p-4">
                         <img
-                          src={image.src}
+                          src={`${import.meta.env.PUBLIC_R2_URL}/${image.src}`}
                           alt={image.alt}
                           className="max-w-full max-h-[80vh] w-auto h-auto object-contain"
                         />

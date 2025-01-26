@@ -4,35 +4,35 @@ export const post: GalleryPost = {
   id: 'sthlm-mara-24',
   images: [
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-02.jpg',
+      src: 'sthlm-mara-24/DSCF5005.jpg',
       alt: 'Oh My!'
     },
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-01.jpg',
+      src: 'sthlm-mara-24/DSCF4998.jpg',
       alt: 'My Bibnumber'
     },
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-03.jpg',
+      src: 'sthlm-mara-24/DSCF5079.jpg',
       alt: 'yearning'
     },
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-04.jpg',
+      src: 'sthlm-mara-24/DSCF5091.jpg',
       alt: 'Harbour district'
     },
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-05.jpg',
+      src: 'sthlm-mara-24/DSCF5118.jpg',
       alt: 'Double up'
     },
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-06.jpg',
+      src: 'sthlm-mara-24/DSCF5145.jpg',
       alt: 'Joy of Photography'
     },
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-07.jpg',
+      src: 'sthlm-mara-24/DSCF5210.jpg',
       alt: 'Summer Love'
     },
     {
-      src: '/gallery/sthlm-mara-24/sthlm-mara-08.jpg',
+      src: 'sthlm-mara-24/DSCF5211.jpg',
       alt: 'Change'
     },
   ]
