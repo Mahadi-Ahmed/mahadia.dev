@@ -13,6 +13,7 @@ const GalleryGrid = ({ posts }: Props) => {
   const [selectedPost, setSelectedPost] = useState<GalleryPost | null>(null)
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
+  console.log(import.meta.env.PUBLIC_R2_URL)
 
   useEffect(() => {
     if (!api) return
