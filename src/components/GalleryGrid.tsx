@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import type { CarouselApi } from '@/components/ui/carousel'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import type { GalleryPost } from '@/content/gallery/types'
 import { getImageUrl } from '@/lib/image-utils'
@@ -64,6 +64,8 @@ const GalleryGrid = ({ posts }: Props) => {
                 <CarouselContent>
                   {selectedPost.images.map((image, index) => (
                     <CarouselItem key={index}>
+                      <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
+                      <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
                       <div className='flex items-center justify-center p-4'>
                         <img
                           src={getImageUrl(image.src, 'full')}
