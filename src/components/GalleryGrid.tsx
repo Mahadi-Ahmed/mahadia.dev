@@ -13,11 +13,9 @@ const GalleryGrid = ({ posts }: Props) => {
   const [selectedPost, setSelectedPost] = useState<GalleryPost | null>(null)
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
-  console.log(import.meta.env.PUBLIC_R2_URL)
 
   useEffect(() => {
     if (!api) return
-
     api.on('select', () => {
       setCurrent(api.selectedScrollSnap())
     })
@@ -60,13 +58,13 @@ const GalleryGrid = ({ posts }: Props) => {
         <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'>
           {selectedPost && (
             <div className='w-full h-full flex flex-col items-center justify-center'>
-              <Carousel setApi={setApi}>
+              <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
                   {selectedPost.images.map((image, index) => (
-                    <CarouselItem key={index}>
+                    <CarouselItem key={index} className="flex items-center justify-center">
                       <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
                       <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
-                      <div className='flex items-center justify-center p-4'>
+                      <div className='w-full h-full flex items-center justify-center p-4'>
                         <img
                           src={getImageUrl(image.src, 'full')}
                           alt={image.alt}
@@ -83,8 +81,9 @@ const GalleryGrid = ({ posts }: Props) => {
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${index === current ? 'bg-white' : 'bg-white/50'
-                      }`}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === current ? 'bg-white' : 'bg-white/50'
+                    }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
