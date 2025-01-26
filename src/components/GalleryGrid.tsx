@@ -43,6 +43,11 @@ const GalleryGrid = ({ posts }: Props) => {
                 src={`${import.meta.env.PUBLIC_R2_URL}/${post.images[0].src}`}
                 alt={post.images[0].alt}
                 className="w-full h-auto rounded-md"
+                height={post.images[0].metadata.height}
+                width={post.images[0].metadata.width}
+                loading='lazy'
+                fetchPriority='high'
+                decoding='async'
               />
             </div>
           </div>
@@ -74,9 +79,8 @@ const GalleryGrid = ({ posts }: Props) => {
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === current ? 'bg-white' : 'bg-white/50'
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-colors ${index === current ? 'bg-white' : 'bg-white/50'
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
