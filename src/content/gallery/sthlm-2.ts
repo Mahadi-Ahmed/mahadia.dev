@@ -5,7 +5,11 @@ export const post: GalleryPost = {
   images: [
     {
       src: 'sthlm-2/DSCF1792.jpg',
-      alt: 'Strawberry arena'
+      alt: 'Strawberry arena',
+      metadata: {
+        height: 4160,
+        width: 6240,
+      }
     },
   ]
 }

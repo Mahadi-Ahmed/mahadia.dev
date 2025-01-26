@@ -5,7 +5,11 @@ export const post: GalleryPost = {
   images: [
     {
       src: 'sing-6/DSCF9560.jpg',
-      alt: 'basketball hoop highrise apartments'
+      alt: 'basketball hoop highrise apartments',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
   ]
 }

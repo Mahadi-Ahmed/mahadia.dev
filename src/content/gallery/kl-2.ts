@@ -5,7 +5,11 @@ export const post: GalleryPost = {
   images: [
     {
       src: 'kl-2/DSCF9275.jpg',
-      alt: 'kl tower'
+      alt: 'kl tower',
+      metadata: {
+        height: 4160,
+        width: 6240,
+      }
     },
   ]
 }

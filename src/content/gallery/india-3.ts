@@ -5,7 +5,11 @@ export const post: GalleryPost = {
   images: [
     {
       src: 'india-3/DSCF7152.jpg',
-      alt: 'india wall'
+      alt: 'india wall',
+      metadata: {
+        width: 2795,
+        height: 3176,
+      }
     },
   ]
 }

@@ -5,35 +5,67 @@ export const post: GalleryPost = {
   images: [
     {
       src: 'sthlm-mara-24/DSCF5005.jpg',
-      alt: 'Oh My!'
+      alt: 'Oh My!',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
     {
       src: 'sthlm-mara-24/DSCF4998.jpg',
-      alt: 'My Bibnumber'
+      alt: 'My Bibnumber',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
     {
       src: 'sthlm-mara-24/DSCF5079.jpg',
-      alt: 'yearning'
+      alt: 'yearning',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
     {
       src: 'sthlm-mara-24/DSCF5091.jpg',
-      alt: 'Harbour district'
+      alt: 'Harbour district',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
     {
       src: 'sthlm-mara-24/DSCF5118.jpg',
-      alt: 'Double up'
+      alt: 'Double up',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
     {
       src: 'sthlm-mara-24/DSCF5145.jpg',
-      alt: 'Joy of Photography'
+      alt: 'Joy of Photography',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
     {
       src: 'sthlm-mara-24/DSCF5210.jpg',
-      alt: 'Summer Love'
+      alt: 'Summer Love',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
     {
       src: 'sthlm-mara-24/DSCF5211.jpg',
-      alt: 'Change'
+      alt: 'Change',
+      metadata: {
+        height: 6240,
+        width: 4160,
+      }
     },
   ]
 }

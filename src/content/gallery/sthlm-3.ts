@@ -5,7 +5,11 @@ export const post: GalleryPost = {
   images: [
     {
       src: 'sthlm-3/DSCF2907.jpg',
-      alt: 'architecture'
+      alt: 'architecture',
+      metadata: {
+        height: 4160,
+        width: 6240,
+      }
     },
   ]
 }

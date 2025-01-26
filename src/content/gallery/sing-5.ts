@@ -5,7 +5,11 @@ export const post: GalleryPost = {
   images: [
     {
       src: 'sing-5/R10-07554-0023.jpg',
-      alt: 'abstract window'
+      alt: 'abstract window',
+      metadata: {
+        height: 2232,
+        width: 1511,
+      }
     },
   ]
 }
