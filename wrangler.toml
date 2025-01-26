@@ -13,3 +13,10 @@ NODE_VERSION = "23.6.1"
 YARN_VERSION = "4.6.0"
 PUBLIC_R2_URL = "https://photos.mahadia.dev"
 
+[build.upload]
+format = "service-worker"
+
+# Enable Brotli and Gzip compression
+[build.upload.compression]
+brotli = true
+gzip = true
