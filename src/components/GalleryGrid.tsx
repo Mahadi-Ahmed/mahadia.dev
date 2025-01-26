@@ -32,18 +32,18 @@ const GalleryGrid = ({ posts }: Props) => {
 
   return (
     <>
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+      <div className='columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4'>
         {posts.map((post) => (
           <div
             key={post.id}
-            className="break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer"
+            className='break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer'
             onClick={() => setSelectedPost(post)}
           >
-            <div className="p-2">
+            <div className='p-2'>
               <img
                 src={getImageUrl(post.images[0].src, 'preview')}
                 alt={post.images[0].alt}
-                className="w-full h-auto rounded-md"
+                className='w-full h-auto rounded-md'
                 height={post.images[0].metadata.height}
                 width={post.images[0].metadata.width}
                 loading='lazy'
@@ -56,18 +56,18 @@ const GalleryGrid = ({ posts }: Props) => {
       </div>
 
       <Dialog open={selectedPost !== null} onOpenChange={() => setSelectedPost(null)}>
-        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90">
+        <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'>
           {selectedPost && (
-            <div className="w-full h-full flex flex-col items-center justify-center">
+            <div className='w-full h-full flex flex-col items-center justify-center'>
               <Carousel setApi={setApi}>
                 <CarouselContent>
                   {selectedPost.images.map((image, index) => (
                     <CarouselItem key={index}>
-                      <div className="flex items-center justify-center p-4">
+                      <div className='flex items-center justify-center p-4'>
                         <img
                           src={getImageUrl(image.src, 'full')}
                           alt={image.alt}
-                          className="max-w-full max-h-[80vh] w-auto h-auto object-contain"
+                          className='max-w-full max-h-[80vh] w-auto h-auto object-contain'
                         />
                       </div>
                     </CarouselItem>
@@ -75,7 +75,7 @@ const GalleryGrid = ({ posts }: Props) => {
                 </CarouselContent>
               </Carousel>
 
-              <div className="flex justify-center gap-2 pb-4">
+              <div className='flex justify-center gap-2 pb-4'>
                 {selectedPost.images.map((_, index) => (
                   <button
                     key={index}
