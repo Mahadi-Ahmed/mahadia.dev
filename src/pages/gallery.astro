@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { posts } from '@/content/gallery'
+import GalleryGrid from '../components/GalleryGrid';
+---
+
+<Layout title="Mahadi Ahmed - Gallery">
+  <main class="max-w-9xl mx-auto px-6 py-12">
+
+    <GalleryGrid client:load posts={posts} />
+  </main>
+</Layout>
