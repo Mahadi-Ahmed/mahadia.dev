@@ -3,6 +3,7 @@ import type { CarouselApi } from '@/components/ui/carousel'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import type { GalleryPost } from '@/content/gallery/types'
+import { getImageUrl } from '@/lib/image-utils'
 
 interface Props {
   posts: GalleryPost[];
@@ -40,7 +41,7 @@ const GalleryGrid = ({ posts }: Props) => {
           >
             <div className="p-2">
               <img
-                src={`${import.meta.env.PUBLIC_R2_URL}/${post.images[0].src}`}
+                src={getImageUrl(post.images[0].src, 'preview')}
                 alt={post.images[0].alt}
                 className="w-full h-auto rounded-md"
                 height={post.images[0].metadata.height}
@@ -64,7 +65,7 @@ const GalleryGrid = ({ posts }: Props) => {
                     <CarouselItem key={index}>
                       <div className="flex items-center justify-center p-4">
                         <img
-                          src={`${import.meta.env.PUBLIC_R2_URL}/${image.src}`}
+                          src={getImageUrl(image.src, 'full')}
                           alt={image.alt}
                           className="max-w-full max-h-[80vh] w-auto h-auto object-contain"
                         />
