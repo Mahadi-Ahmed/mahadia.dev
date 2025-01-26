@@ -16,6 +16,7 @@ TODO:
 - [x] add carousel to view photos in a clicked post in modal
 - [x] deploy astro version
 - [] Optimizations 
+- [] add filtering
 
 # Astro Starter Kit: Basics
 
