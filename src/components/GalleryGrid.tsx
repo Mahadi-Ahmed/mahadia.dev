@@ -1,33 +1,33 @@
-import { useState, useEffect } from 'react';
-import type { CarouselApi } from "@/components/ui/carousel"
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import type { GalleryPost } from '@/content/gallery/types';
+import { useState, useEffect } from 'react'
+import type { CarouselApi } from '@/components/ui/carousel'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
+import type { GalleryPost } from '@/content/gallery/types'
 
 interface Props {
   posts: GalleryPost[];
 }
 
 const GalleryGrid = ({ posts }: Props) => {
-  const [selectedPost, setSelectedPost] = useState<GalleryPost | null>(null);
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
+  const [selectedPost, setSelectedPost] = useState<GalleryPost | null>(null)
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
 
   useEffect(() => {
-    if (!api) return;
+    if (!api) return
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
+    api.on('select', () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
 
   // Reset current index when modal opens/closes
   useEffect(() => {
-    setCurrent(0);
+    setCurrent(0)
     if (api) {
-      api.scrollTo(0);
+      api.scrollTo(0)
     }
-  }, [selectedPost, api]);
+  }, [selectedPost, api])
 
   return (
     <>
@@ -86,7 +86,7 @@ const GalleryGrid = ({ posts }: Props) => {
         </DialogContent>
       </Dialog>
     </>
-  );
-};
+  )
+}
 
-export default GalleryGrid;
+export default GalleryGrid

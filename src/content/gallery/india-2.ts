@@ -1,4 +1,4 @@
-import type { GalleryPost } from './types';
+import type { GalleryPost } from './types'
 
 export const post: GalleryPost = {
   id: 'india-2',
@@ -8,4 +8,4 @@ export const post: GalleryPost = {
       alt: 'india textured wall'
     },
   ]
-};
+}
