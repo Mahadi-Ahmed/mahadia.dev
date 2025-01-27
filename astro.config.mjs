@@ -5,13 +5,15 @@ import sitemap from '@astrojs/sitemap';
 
 import robotsTxt from 'astro-robots-txt';
 
-const site = process.env.CF_PAGES_URL || 'https://mahadia.dev';
+const site = process.env.CF_PAGES_URL 
+  ? process.env.CF_PAGES_URL.replace(/https?:\/\//, '')
+  : 'mahadia.dev';
 const isPreview = site.includes('pages.dev');
 
 console.log('building for site: ', site)
 // https://astro.build/config
 export default defineConfig({
-  site,
+  site: `https://${site}`,
   integrations: [
     react(),
     tailwind({
