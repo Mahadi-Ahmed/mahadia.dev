@@ -19,12 +19,12 @@ const ViewportMappings: Record<ViewportType, { preview: number; full: number }> 
     full: 500
   },
   tablet: {
-    preview: 500,
-    full: 750
+    preview: 400,
+    full: 650
   },
   desktop: {
-    preview: 750,
-    full: 1000
+    preview: 550,
+    full: 800
   },
   xlDesktop: {
     preview: 750,
