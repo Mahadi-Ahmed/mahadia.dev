@@ -3,9 +3,11 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
+const site = process.env.CF_PAGES_URL || 'https://mahadia.dev';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mahadia.dev',
+  site,
   integrations: [
     react(),
     tailwind({
