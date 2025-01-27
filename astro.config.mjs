@@ -1,15 +1,43 @@
 import { defineConfig } from 'astro/config';
-
 import react from '@astrojs/react';
-
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
+import robotsTxt from 'astro-robots-txt';
+
+const site = process.env.CF_PAGES_URL || 'https://mahadia.dev';
+const isPreview = process.env.CF_PAGES_BRANCH !== 'main';
+
+console.log('building for site: ', site)
 // https://astro.build/config
 export default defineConfig({
+  site,
   integrations: [
     react(),
     tailwind({
       applyBaseStyles: false,
+    }),
+    sitemap(),
+    robotsTxt({
+      policy: [
+        {
+          userAgent: '*',
+          ...(isPreview
+            ? { disallow: '/' }
+            : {
+              allow: ['/', '/gallery'],
+              disallow: [
+                '/components/',
+                '/layouts/',
+                '/styles/'
+              ]
+            }
+          ),
+          crawlDelay: 10
+        }
+      ],
+      sitemap: true,
+      host: false
     })
   ],
   build: {
