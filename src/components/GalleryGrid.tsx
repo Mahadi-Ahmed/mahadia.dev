@@ -13,6 +13,14 @@ const GalleryGrid = ({ posts }: Props) => {
   const [selectedPost, setSelectedPost] = useState<GalleryPost | null>(null)
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
+  const [viewportSize, setViewportSize] = useState(0)
+
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setViewportSize(window.innerWidth)
+    }
+  }, [])
 
   useEffect(() => {
     if (!api) return
@@ -40,7 +48,7 @@ const GalleryGrid = ({ posts }: Props) => {
           >
             <div className='p-2'>
               <img
-                src={getImageUrl(post.images[0].src, 'preview')}
+                src={getImageUrl(post.images[0].src, 'thumbnail', viewportSize)}
                 alt={post.images[0].alt}
                 className='w-full h-auto rounded-md'
                 height={post.images[0].metadata.height}
@@ -66,7 +74,7 @@ const GalleryGrid = ({ posts }: Props) => {
                       <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
                       <div className='w-full h-full flex items-center justify-center p-4'>
                         <img
-                          src={getImageUrl(image.src, 'full')}
+                          src={getImageUrl(image.src, 'full', viewportSize)}
                           alt={image.alt}
                           className='max-w-full max-h-[80vh] w-auto h-auto object-contain'
                         />
@@ -81,9 +89,8 @@ const GalleryGrid = ({ posts }: Props) => {
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === current ? 'bg-white' : 'bg-white/50'
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-colors ${index === current ? 'bg-white' : 'bg-white/50'
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}

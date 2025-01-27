@@ -1,7 +1,8 @@
 const IMAGE_DOMAIN = import.meta.env.PUBLIC_R2_URL
 
-type ImageSize = 'thumbnail' | 'preview' | 'full';
+type ImageSize = 'tinyThumbnail' | 'thumbnail' | 'full';
 type ImageFormat = 'webp' | 'jpeg';
+type ViewportType = 'mobile' | 'tablet' | 'desktop' | 'xlDesktop';
 
 interface ImageOptions {
   width?: number;
@@ -12,23 +13,55 @@ interface ImageOptions {
   blur?: number;
 }
 
-export const getImageUrl = (path: string, size: ImageSize): string => {
+const ViewportMappings: Record<ViewportType, { preview: number; full: number }> = {
+  mobile: {
+    preview: 300,
+    full: 500
+  },
+  tablet: {
+    preview: 500,
+    full: 750
+  },
+  desktop: {
+    preview: 750,
+    full: 1000
+  },
+  xlDesktop: {
+    preview: 750,
+    full: 1500
+  }
+}
+
+const getViewportType = (width: number): ViewportType => {
+  if (width < 768) return 'mobile'
+  if (width < 1024) return 'tablet'
+  if (width < 1280) return 'desktop'
+  return 'xlDesktop'
+}
+
+const getImageWidth = (size: 'preview' | 'full', viewportWidth: number): number => {
+  const viewport = getViewportType(viewportWidth)
+  return ViewportMappings[viewport][size]
+}
+
+export const getImageUrl = (path: string, size: ImageSize, viewportSize: number): string => {
+
   const defaults: Record<ImageSize, ImageOptions> = {
-    thumbnail: {
+    tinyThumbnail: {
       width: 20,
       quality: 30,
       format: 'webp',
       blur: 10
     },
-    preview: {
-      width: 800,
+    thumbnail: {
+      width: getImageWidth('preview', viewportSize),
       quality: 75,
       format: 'webp',
       fit: 'cover'
     },
     full: {
       // For full size, we use different widths based on screen size
-      width: 1920,
+      width: getImageWidth('full', viewportSize),
       quality: 85,
       format: 'webp',
       fit: 'scale-down'
