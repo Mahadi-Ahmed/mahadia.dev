@@ -17,6 +17,7 @@ TODO:
 - [x] deploy astro version
 - [] Optimizations 
 - [] add filtering
+- [] add swipe down to close modal
 
 # Astro Starter Kit: Basics
 
