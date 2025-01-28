@@ -11,6 +11,7 @@ interface ImageOptions {
   format?: ImageFormat;
   fit?: 'scale-down' | 'contain' | 'cover' | 'crop' | 'pad';
   blur?: number;
+  'cf-cache-ttl'?: number
 }
 
 const ViewportMappings: Record<ViewportType, { preview: number; full: number }> = {
@@ -45,26 +46,30 @@ const getImageWidth = (size: 'preview' | 'full', viewportWidth: number): number 
 }
 
 export const getImageUrl = (path: string, size: ImageSize, viewportSize: number): string => {
+  const CACHE_TTL = 2592000
 
   const defaults: Record<ImageSize, ImageOptions> = {
     tinyThumbnail: {
       width: 20,
       quality: 30,
       format: 'webp',
-      blur: 10
+      blur: 10,
+      'cf-cache-ttl': CACHE_TTL
     },
     thumbnail: {
       width: getImageWidth('preview', viewportSize),
       quality: 75,
       format: 'webp',
-      fit: 'cover'
+      fit: 'cover',
+      'cf-cache-ttl': CACHE_TTL
     },
     full: {
       // For full size, we use different widths based on screen size
       width: getImageWidth('full', viewportSize),
       quality: 85,
       format: 'webp',
-      fit: 'scale-down'
+      fit: 'scale-down',
+      'cf-cache-ttl': CACHE_TTL
     }
   }
 
