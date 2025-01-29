@@ -16,20 +16,20 @@ interface ImageOptions {
 
 const ViewportMappings: Record<ViewportType, { preview: number; full: number }> = {
   mobile: {
-    preview: 300,
-    full: 500
-  },
-  tablet: {
-    preview: 400,
-    full: 650
-  },
-  desktop: {
-    preview: 550,
+    preview: 430,
     full: 800
   },
+  tablet: {
+    preview: 500,
+    full: 800
+  },
+  desktop: {
+    preview: 800,
+    full: 1280
+  },
   xlDesktop: {
-    preview: 750,
-    full: 1500
+    preview: 800,
+    full: 1800
   }
 }
 
@@ -58,7 +58,7 @@ export const getImageUrl = (path: string, size: ImageSize, viewportSize: number)
     },
     thumbnail: {
       width: getImageWidth('preview', viewportSize),
-      quality: 75,
+      quality: 80,
       format: 'webp',
       fit: 'cover',
       'cf-cache-ttl': CACHE_TTL
