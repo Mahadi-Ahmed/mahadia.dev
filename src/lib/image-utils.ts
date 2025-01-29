@@ -24,7 +24,7 @@ const ViewportMappings: Record<ViewportType, { preview: number; full: number }> 
     full: 800
   },
   desktop: {
-    preview: 800,
+    preview: 640,
     full: 1280
   },
   xlDesktop: {
