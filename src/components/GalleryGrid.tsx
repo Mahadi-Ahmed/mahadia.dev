@@ -3,7 +3,6 @@ import type { CarouselApi } from '@/components/ui/carousel'
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import type { GalleryPost } from '@/content/gallery/types'
-import { getImageUrl } from '@/lib/image-utils'
 import Picture from './Picture'
 
 interface Props {
@@ -50,7 +49,6 @@ const GalleryGrid = ({ posts }: Props) => {
           >
             <div className='p-2'>
               <Picture 
-                // src={getImageUrl(post.images[0].src, 'thumbnail', viewportSize)}
                 src={post.images[0].src}
                 alt={post.images[0].alt}
                 height={post.images[0].metadata.height}
@@ -66,7 +64,7 @@ const GalleryGrid = ({ posts }: Props) => {
       <Dialog open={selectedPost !== null} onOpenChange={() => setSelectedPost(null)}>
         <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'>
           {selectedPost && (
-            <div className='w-full h-full flex flex-col items-center justify-center'>
+            <div className='w-full h-full flex flex-col items-center justify-center relative'>
               <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
                   {selectedPost.images.map((image, index) => (
