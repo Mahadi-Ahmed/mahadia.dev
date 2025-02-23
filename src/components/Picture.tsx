@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { getImageUrl } from '@/lib/image-utils'
+import { getImageUrl, getImageWidth } from '@/lib/image-utils'
 
 interface Props {
   src: string
@@ -17,12 +17,6 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
   const thumbnailUrl = getImageUrl(src, 'tinyThumbnail', viewportSize)
   const srcUrl = getImageUrl(src, fullSize ? 'full' : 'thumbnail', viewportSize)
 
-  const laddar = () => {
-    console.log('loading: ', alt)
-    console.log('fullSize: ', fullSize)
-    setLoaded(true)
-  }
-
   useEffect(() => {
     // Check if the image is already loaded from cache
     if (imgRef.current && imgRef.current.complete) {
@@ -35,7 +29,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
     return null
   }
 
-  const imageClasses = fullSize ? 'max-w-full max-h-[80vh] w-auto h-auto object-contain' : 'w-full h-auto rounded-md'
+  const imageClasses = fullSize ? `w-[${getImageWidth('full', viewportSize)}px] max-w-full max-h-[80vh] h-auto object-contain` : 'w-full h-auto rounded-md'
 
   return (
     <div className="relative w-full h-auto">
@@ -50,8 +44,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
             width={width}
             loading="lazy"
             decoding="async"
-            onLoad={laddar}
-          // onLoad={() => setLoaded(true)}
+            onLoad={() => setLoaded(true)}
           />
         )
           : (
@@ -64,8 +57,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
               width={width}
               loading="lazy"
               decoding="async"
-              onLoad={laddar}
-            // onLoad={() => setLoaded(true)}
+              onLoad={() => setLoaded(true)}
             />
           )
       }
@@ -74,3 +66,4 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
 }
 
 export default Picture
+
