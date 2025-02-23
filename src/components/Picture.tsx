@@ -4,54 +4,71 @@ import { getImageUrl } from '@/lib/image-utils'
 interface Props {
   src: string
   alt: string
-  height: number
-  width: number
+  height?: number
+  width?: number
+  viewportSize: number
+  fullSize: boolean
 }
 
-const Picture = ({ src, alt, height, width }: Props) => {
+const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => {
   const [isLoaded, setLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
-  const [bigPic, setBigPic] = useState('')
 
-  console.log(imgRef)
+  const thumbnailUrl = getImageUrl(src, 'tinyThumbnail', viewportSize)
+  const srcUrl = getImageUrl(src, fullSize ? 'full' : 'thumbnail', viewportSize)
+
+  const laddar = () => {
+    console.log('loading: ', alt)
+    console.log('fullSize: ', fullSize)
+    setLoaded(true)
+  }
 
   useEffect(() => {
     // Check if the image is already loaded from cache
     if (imgRef.current && imgRef.current.complete) {
-      // console.log('loaded', src)
+      console.log('loaded from cache')
       setLoaded(true)
-      const fullSize = src.split('-tiny')
-      const bigPicUrl = fullSize[0] + fullSize[1]
-      setBigPic(bigPicUrl)
-      console.log(bigPicUrl)
     }
-  }, [])
+  }, [src])
 
+  if (!thumbnailUrl) {
+    return null
+  }
 
+  const imageClasses = fullSize ? 'max-w-full max-h-[80vh] w-auto h-auto object-contain' : 'w-full h-auto rounded-md'
 
   return (
     <div className="relative w-full h-auto">
-      {/* {!isLoaded && ( */}
-      {/*   <div */}
-      {/*     className="w-full h-full bg-gray-200 animate-pulse rounded-md" */}
-      {/*     style={{ aspectRatio: `${width}/${height}` }} */}
-      {/*   /> */}
-      {/* )} */}
-
-      <img
-        // src={getImageUrl(src, 'tinyThumbnail', 500)}
-        ref={imgRef}
-        src={src}
-        alt={alt}
-        className={`w-full h-auto rounded-md transition-opacity duration-300 inset-0
-          ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-        height={height}
-        width={width}
-        loading="lazy"
-        fetchPriority="high"
-        decoding="async"
-        onLoad={() => setLoaded(true)}
-      />
+      {
+        !isLoaded ? (
+          <img
+            ref={imgRef}
+            src={thumbnailUrl}
+            alt={alt}
+            className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
+            height={height}
+            width={width}
+            loading="lazy"
+            decoding="async"
+            onLoad={laddar}
+          // onLoad={() => setLoaded(true)}
+          />
+        )
+          : (
+            <img
+              ref={imgRef}
+              src={srcUrl}
+              alt={alt}
+              className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+              height={height}
+              width={width}
+              loading="lazy"
+              decoding="async"
+              onLoad={laddar}
+            // onLoad={() => setLoaded(true)}
+            />
+          )
+      }
     </div>
   )
 }

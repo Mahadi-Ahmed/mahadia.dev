@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import type { GalleryPost } from '@/content/gallery/types'
 import { getImageUrl } from '@/lib/image-utils'
+import Picture from './Picture'
 
 interface Props {
   posts: GalleryPost[];
@@ -18,6 +19,7 @@ const GalleryGrid = ({ posts }: Props) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      console.log('viewportSize in GalleryGrid: ', window.innerWidth)
       setViewportSize(window.innerWidth)
     }
   }, [])
@@ -47,15 +49,14 @@ const GalleryGrid = ({ posts }: Props) => {
             onClick={() => setSelectedPost(post)}
           >
             <div className='p-2'>
-              <img
-                src={getImageUrl(post.images[0].src, 'thumbnail', viewportSize)}
+              <Picture 
+                // src={getImageUrl(post.images[0].src, 'thumbnail', viewportSize)}
+                src={post.images[0].src}
                 alt={post.images[0].alt}
-                className='w-full h-auto rounded-md'
                 height={post.images[0].metadata.height}
                 width={post.images[0].metadata.width}
-                loading='lazy'
-                fetchPriority='high'
-                decoding='async'
+                viewportSize={viewportSize}
+                fullSize={false}
               />
             </div>
           </div>
@@ -72,11 +73,13 @@ const GalleryGrid = ({ posts }: Props) => {
                     <CarouselItem key={index} className="flex items-center justify-center">
                       <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
                       <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
-                      <div className='w-full h-full flex items-center justify-center p-4'>
-                        <img
-                          src={getImageUrl(image.src, 'full', viewportSize)}
+                      {/* <div className='w-full h-full flex items-center justify-center p-4'> */}
+                      <div className='p-4'>
+                        <Picture 
+                          src={image.src}
                           alt={image.alt}
-                          className='max-w-full max-h-[80vh] w-auto h-auto object-contain'
+                          viewportSize={viewportSize}
+                          fullSize={true}
                         />
                       </div>
                     </CarouselItem>
