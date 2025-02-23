@@ -19,7 +19,7 @@ TODO:
 - [x] Pretty load pics
     - [x] Create a img component that will load 20px first then the real one with animations
 
-- [] upgrade astro
+- [x] upgrade astro
 
 - [] add swipe down to close modal
 - [] click on outside modal should close modal
