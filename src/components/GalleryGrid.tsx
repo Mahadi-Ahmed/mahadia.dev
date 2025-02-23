@@ -71,7 +71,6 @@ const GalleryGrid = ({ posts }: Props) => {
                     <CarouselItem key={index} className="flex items-center justify-center">
                       <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
                       <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
-                      {/* <div className='w-full h-full flex items-center justify-center p-4'> */}
                       <div className='p-4'>
                         <Picture 
                           src={image.src}
@@ -85,7 +84,7 @@ const GalleryGrid = ({ posts }: Props) => {
                 </CarouselContent>
               </Carousel>
 
-              <div className='flex justify-center gap-2 pb-4'>
+              <div className='absolute bottom-8 left-0 right-0 flex justify-center gap-2'>
                 {selectedPost.images.map((_, index) => (
                   <button
                     key={index}
