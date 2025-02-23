@@ -16,9 +16,8 @@ TODO:
 - [x] add carousel to view photos in a clicked post in modal
 - [x] deploy astro version
 
-- [] Pretty load pics
-    - [] Create a img component that will load 20px first then the real one with animations
-    - [] take 10 lighthouse reports from current version to compare with new version
+- [x] Pretty load pics
+    - [x] Create a img component that will load 20px first then the real one with animations
 
 - [] upgrade astro
 

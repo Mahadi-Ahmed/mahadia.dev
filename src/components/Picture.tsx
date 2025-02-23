@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { getImageUrl, getImageWidth } from '@/lib/image-utils'
+import { getImageUrl } from '@/lib/image-utils'
 
 interface Props {
   src: string
@@ -18,7 +18,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
   const srcUrl = getImageUrl(src, fullSize ? 'full' : 'thumbnail', viewportSize)
 
   useEffect(() => {
-    // Check if the image is already loaded from cache
+    // NOTE: Check if the image is already loaded from cache
     if (imgRef.current && imgRef.current.complete) {
       console.log('loaded from cache')
       setLoaded(true)
@@ -29,38 +29,39 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
     return null
   }
 
-  const imageClasses = fullSize ? `w-[${getImageWidth('full', viewportSize)}px] max-w-full max-h-[80vh] h-auto object-contain` : 'w-full h-auto rounded-md'
+  const getImageClasses = (isFullSize: boolean) => {
+    if (!isFullSize) {
+      return 'w-full h-auto rounded-sm'
+    }
+
+    // NOTE: using hardcoded values instead of getImageWidth & the viewportMappings
+    // in image-utils due to tailwind JIT
+    return [
+      'w-[800px]',
+      'lg:w-[1280px]',
+      'xl:w-[1800px]',
+      'max-w-full',
+      'max-h-[80vh]',
+      'h-auto',
+      'object-contain'
+    ].join(' ')
+  }
+
+  const imageClasses = getImageClasses(fullSize)
 
   return (
     <div className="relative w-full h-auto">
-      {
-        !isLoaded ? (
-          <img
-            ref={imgRef}
-            src={thumbnailUrl}
-            alt={alt}
-            className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
-            height={height}
-            width={width}
-            loading="lazy"
-            decoding="async"
-            onLoad={() => setLoaded(true)}
-          />
-        )
-          : (
-            <img
-              ref={imgRef}
-              src={srcUrl}
-              alt={alt}
-              className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-              height={height}
-              width={width}
-              loading="lazy"
-              decoding="async"
-              onLoad={() => setLoaded(true)}
-            />
-          )
-      }
+      <img
+        src={isLoaded ? srcUrl : thumbnailUrl}
+        ref={imgRef}
+        alt={alt}
+        className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
+        height={height}
+        width={width}
+        loading="lazy"
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+      />
     </div>
   )
 }
