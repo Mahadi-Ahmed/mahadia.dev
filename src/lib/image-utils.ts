@@ -40,7 +40,7 @@ const getViewportType = (width: number): ViewportType => {
   return 'xlDesktop'
 }
 
-const getImageWidth = (size: 'preview' | 'full', viewportWidth: number): number => {
+export const getImageWidth = (size: 'preview' | 'full', viewportWidth: number): number => {
   const viewport = getViewportType(viewportWidth)
   return ViewportMappings[viewport][size]
 }
@@ -53,7 +53,7 @@ export const getImageUrl = (path: string, size: ImageSize, viewportSize: number)
       width: 20,
       quality: 30,
       format: 'webp',
-      blur: 10,
+      blur: 2,
       'cf-cache-ttl': CACHE_TTL
     },
     thumbnail: {
