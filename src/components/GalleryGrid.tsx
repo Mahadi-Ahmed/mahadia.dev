@@ -18,7 +18,6 @@ const GalleryGrid = ({ posts }: Props) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      console.log('viewportSize in GalleryGrid: ', window.innerWidth)
       setViewportSize(window.innerWidth)
     }
   }, [])

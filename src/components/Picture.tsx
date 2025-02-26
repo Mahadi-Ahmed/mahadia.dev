@@ -20,7 +20,6 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
   useEffect(() => {
     // NOTE: Check if the image is already loaded from cache
     if (imgRef.current && imgRef.current.complete) {
-      console.log('loaded from cache')
       setLoaded(true)
     }
   }, [src])
