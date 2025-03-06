@@ -56,7 +56,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize, loadingBehav
           src={thumbnailUrl}
           ref={imgRef}
           alt={alt}
-          className={`${imageClasses} rounded-sm absolute inset-0 transition-opacity duration-300 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+          className={`${imageClasses} rounded-sm absolute inset-0 transition-opacity  ${isLoaded ? 'opacity-0 duration-300' : 'opacity-100 animate-pulse'}`}
           height={height}
           width={width}
         />
