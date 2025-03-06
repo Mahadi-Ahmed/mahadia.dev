@@ -51,10 +51,19 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
   return (
     <div className="relative w-full h-auto">
       <img
-        src={isLoaded ? srcUrl : thumbnailUrl}
+        src={thumbnailUrl}
         ref={imgRef}
         alt={alt}
-        className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
+        className={`${imageClasses} rounded-sm absolute inset-0 transition-opacity duration-300 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+        height={height}
+        width={width}
+      />
+
+      <img
+        src={srcUrl}
+        ref={imgRef}
+        alt={alt}
+        className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         height={height}
         width={width}
         loading="lazy"
