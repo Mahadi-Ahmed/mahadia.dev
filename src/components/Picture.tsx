@@ -43,7 +43,8 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize, loadingBehav
       'max-w-full',
       'max-h-[80vh]',
       'h-auto',
-      'object-contain'
+      'object-contain',
+      'rounded-sm'
     ].join(' ')
   }
 
@@ -56,7 +57,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize, loadingBehav
           src={thumbnailUrl}
           ref={imgRef}
           alt={alt}
-          className={`${imageClasses} rounded-sm absolute inset-0 transition-opacity  ${isLoaded ? 'opacity-0 duration-300' : 'opacity-100 animate-pulse'}`}
+          className={`${imageClasses} absolute inset-0 transition-opacity  ${isLoaded ? 'opacity-0 duration-300' : 'opacity-100 animate-pulse'}`}
           height={height}
           width={width}
         />
@@ -65,7 +66,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize, loadingBehav
           src={srcUrl}
           ref={imgRef}
           alt={alt}
-          className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           height={height}
           width={width}
           loading="lazy"
@@ -81,7 +82,7 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize, loadingBehav
           src={isLoaded ? srcUrl : thumbnailUrl}
           ref={imgRef}
           alt={alt}
-          className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
+          className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
           height={height}
           width={width}
           loading="lazy"
