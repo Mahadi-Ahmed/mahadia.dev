@@ -76,6 +76,7 @@ const GalleryGrid = ({ posts }: Props) => {
                           alt={image.alt}
                           viewportSize={viewportSize}
                           fullSize={true}
+                          loadingBehaviour='fadein'
                         />
                       </div>
                     </CarouselItem>

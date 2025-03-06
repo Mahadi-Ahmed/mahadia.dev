@@ -8,9 +8,10 @@ interface Props {
   width?: number
   viewportSize: number
   fullSize: boolean
+  loadingBehaviour?: 'crossfade' | 'fadein'
 }
 
-const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => {
+const Picture = ({ src, alt, height, width, viewportSize, fullSize, loadingBehaviour = 'crossfade' }: Props) => {
   const [isLoaded, setLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
@@ -48,30 +49,48 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
 
   const imageClasses = getImageClasses(fullSize)
 
-  return (
-    <div className="relative w-full h-auto">
-      <img
-        src={thumbnailUrl}
-        ref={imgRef}
-        alt={alt}
-        className={`${imageClasses} rounded-sm absolute inset-0 transition-opacity duration-300 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
-        height={height}
-        width={width}
-      />
+  if (loadingBehaviour === 'crossfade') {
+    return (
+      <div className="relative w-full h-auto">
+        <img
+          src={thumbnailUrl}
+          ref={imgRef}
+          alt={alt}
+          className={`${imageClasses} rounded-sm absolute inset-0 transition-opacity duration-300 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+          height={height}
+          width={width}
+        />
 
-      <img
-        src={srcUrl}
-        ref={imgRef}
-        alt={alt}
-        className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-        height={height}
-        width={width}
-        loading="lazy"
-        decoding="async"
-        onLoad={() => setLoaded(true)}
-      />
-    </div>
-  )
+        <img
+          src={srcUrl}
+          ref={imgRef}
+          alt={alt}
+          className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          height={height}
+          width={width}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+        />
+      </div>
+    )
+  } else {
+    return (
+      <div className="relative w-full h-auto">
+        <img
+          src={isLoaded ? srcUrl : thumbnailUrl}
+          ref={imgRef}
+          alt={alt}
+          className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
+          height={height}
+          width={width}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+        />
+      </div>
+    )
+  }
 }
 
 export default Picture
