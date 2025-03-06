@@ -18,7 +18,6 @@ const GalleryGrid = ({ posts }: Props) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      console.log('viewportSize in GalleryGrid: ', window.innerWidth)
       setViewportSize(window.innerWidth)
     }
   }, [])
@@ -77,6 +76,7 @@ const GalleryGrid = ({ posts }: Props) => {
                           alt={image.alt}
                           viewportSize={viewportSize}
                           fullSize={true}
+                          loadingBehaviour='fadein'
                         />
                       </div>
                     </CarouselItem>

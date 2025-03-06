@@ -8,9 +8,10 @@ interface Props {
   width?: number
   viewportSize: number
   fullSize: boolean
+  loadingBehaviour?: 'crossfade' | 'fadein'
 }
 
-const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => {
+const Picture = ({ src, alt, height, width, viewportSize, fullSize, loadingBehaviour = 'crossfade' }: Props) => {
   const [isLoaded, setLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
@@ -20,7 +21,6 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
   useEffect(() => {
     // NOTE: Check if the image is already loaded from cache
     if (imgRef.current && imgRef.current.complete) {
-      console.log('loaded from cache')
       setLoaded(true)
     }
   }, [src])
@@ -43,27 +43,55 @@ const Picture = ({ src, alt, height, width, viewportSize, fullSize }: Props) => 
       'max-w-full',
       'max-h-[80vh]',
       'h-auto',
-      'object-contain'
+      'object-contain',
+      'rounded-sm'
     ].join(' ')
   }
 
   const imageClasses = getImageClasses(fullSize)
 
-  return (
-    <div className="relative w-full h-auto">
-      <img
-        src={isLoaded ? srcUrl : thumbnailUrl}
-        ref={imgRef}
-        alt={alt}
-        className={`${imageClasses} rounded-sm transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
-        height={height}
-        width={width}
-        loading="lazy"
-        decoding="async"
-        onLoad={() => setLoaded(true)}
-      />
-    </div>
-  )
+  if (loadingBehaviour === 'crossfade') {
+    return (
+      <div className="relative w-full h-auto">
+        <img
+          src={thumbnailUrl}
+          ref={imgRef}
+          alt={alt}
+          className={`${imageClasses} absolute inset-0 transition-opacity  ${isLoaded ? 'opacity-0 duration-300' : 'opacity-100 animate-pulse'}`}
+          height={height}
+          width={width}
+        />
+
+        <img
+          src={srcUrl}
+          ref={imgRef}
+          alt={alt}
+          className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          height={height}
+          width={width}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+        />
+      </div>
+    )
+  } else {
+    return (
+      <div className="relative w-full h-auto">
+        <img
+          src={isLoaded ? srcUrl : thumbnailUrl}
+          ref={imgRef}
+          alt={alt}
+          className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} `}
+          height={height}
+          width={width}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setLoaded(true)}
+        />
+      </div>
+    )
+  }
 }
 
 export default Picture
