@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { getImageUrl } from '@/lib/image-utils'
+import { getImageUrl, getViewportType } from '@/lib/image-utils'
 import type { GalleryImage } from '@/content/gallery/types'
 
 interface Props {
@@ -48,6 +48,21 @@ const Picture = ({ image, viewportSize, fullSize, loadingBehaviour = 'crossfade'
 
   const imageClasses = getImageClasses(fullSize)
 
+  const fetchPrio = (): 'lazy' | 'eager' => {
+    const viewport = getViewportType(viewportSize)
+
+    if (viewport === 'mobile' && image.prioLoad?.sm) {
+      return 'eager'
+    } else if (viewport === 'tablet' && image.prioLoad?.md) {
+      return 'eager'
+    } else if (viewport === 'desktop' && image.prioLoad?.lg) {
+      return 'eager'
+    } else if (viewport === 'xlDesktop' && image.prioLoad?.lg) {
+      return 'eager'
+    }
+    return 'lazy'
+  }
+
   if (loadingBehaviour === 'crossfade') {
     return (
       <div className="relative w-full h-auto">
@@ -67,7 +82,8 @@ const Picture = ({ image, viewportSize, fullSize, loadingBehaviour = 'crossfade'
           className={`${imageClasses} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           height={image.metadata.height}
           width={image.metadata.width}
-          loading="lazy"
+          loading={fetchPrio()}
+          fetchPriority={fetchPrio() === 'eager' ? 'high' : 'auto'}
           decoding="async"
           onLoad={() => setLoaded(true)}
         />

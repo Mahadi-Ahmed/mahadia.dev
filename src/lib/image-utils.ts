@@ -16,16 +16,16 @@ interface ImageOptions {
 
 const ViewportMappings: Record<ViewportType, { preview: number; full: number }> = {
   mobile: {
-    preview: 430,
-    full: 800
+    preview: 400,
+    full: 750
   },
   tablet: {
-    preview: 500,
-    full: 800
+    preview: 450,
+    full: 750
   },
   desktop: {
-    preview: 640,
-    full: 1280
+    preview: 600,
+    full: 1000
   },
   xlDesktop: {
     preview: 800,
@@ -33,14 +33,14 @@ const ViewportMappings: Record<ViewportType, { preview: number; full: number }> 
   }
 }
 
-const getViewportType = (width: number): ViewportType => {
+export const getViewportType = (width: number): ViewportType => {
   if (width < 768) return 'mobile'
   if (width < 1024) return 'tablet'
   if (width < 1280) return 'desktop'
   return 'xlDesktop'
 }
 
-export const getImageWidth = (size: 'preview' | 'full', viewportWidth: number): number => {
+const getImageWidth = (size: 'preview' | 'full', viewportWidth: number): number => {
   const viewport = getViewportType(viewportWidth)
   return ViewportMappings[viewport][size]
 }
