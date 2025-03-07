@@ -9,6 +9,11 @@ export type GalleryImage = {
   src: string;
   alt: string;
   metadata: ImageMetadata;
+  prioLoad?: {
+    sm?: boolean,
+    md?: boolean,
+    lg?: boolean
+  }
 }
 
 export type GalleryPost = {

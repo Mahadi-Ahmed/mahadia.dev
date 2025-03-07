@@ -48,10 +48,7 @@ const GalleryGrid = ({ posts }: Props) => {
           >
             <div className='p-2'>
               <Picture 
-                src={post.images[0].src}
-                alt={post.images[0].alt}
-                height={post.images[0].metadata.height}
-                width={post.images[0].metadata.width}
+                image={post.images[0]}
                 viewportSize={viewportSize}
                 fullSize={false}
               />
@@ -72,8 +69,7 @@ const GalleryGrid = ({ posts }: Props) => {
                       <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
                       <div className='p-4'>
                         <Picture 
-                          src={image.src}
-                          alt={image.alt}
+                          image={image}
                           viewportSize={viewportSize}
                           fullSize={true}
                           loadingBehaviour='fadein'
