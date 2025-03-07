@@ -21,7 +21,9 @@ TODO:
 
 - [x] upgrade astro
 
-- [] add swipe down to close modal
+- [x] Fix font loading - download & use fonts locally
+
+
 - [] click on outside modal should close modal
 
 - [] Fix font loading

@@ -4,6 +4,14 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      fontWeight: {
+        light: 300,
+        normal: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
+        extrabold: 800
+      },
       fontFamily: {
         outfit: ['Outfit', 'sans-serif'],
         space: ['Space Grotesk', 'sans-serif'],
