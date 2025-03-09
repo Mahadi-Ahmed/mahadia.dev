@@ -58,13 +58,21 @@ const GalleryGrid = ({ posts }: Props) => {
       </div>
 
       <Dialog open={selectedPost !== null} onOpenChange={() => setSelectedPost(null)}>
-        <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'>
+        <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'
+        >
           {selectedPost && (
             <div className='w-full h-full flex flex-col items-center justify-center relative'
               onClick={(e) => {
-                if (e.target === e.currentTarget) {
-                  setSelectedPost(null)
+                const target = e.target as HTMLElement
+                const tagName = target.tagName.toLowerCase()
+
+                const ignoredElements = ['img', 'button']
+
+                if (ignoredElements.includes(tagName)) {
+                  return
                 }
+
+                setSelectedPost(null)
               }}
             >
               <Carousel setApi={setApi} className="w-full">
