@@ -47,7 +47,7 @@ const GalleryGrid = ({ posts }: Props) => {
             onClick={() => setSelectedPost(post)}
           >
             <div className='p-2'>
-              <Picture 
+              <Picture
                 image={post.images[0]}
                 viewportSize={viewportSize}
                 fullSize={false}
@@ -60,7 +60,13 @@ const GalleryGrid = ({ posts }: Props) => {
       <Dialog open={selectedPost !== null} onOpenChange={() => setSelectedPost(null)}>
         <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'>
           {selectedPost && (
-            <div className='w-full h-full flex flex-col items-center justify-center relative'>
+            <div className='w-full h-full flex flex-col items-center justify-center relative'
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  setSelectedPost(null)
+                }
+              }}
+            >
               <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
                   {selectedPost.images.map((image, index) => (
@@ -68,7 +74,7 @@ const GalleryGrid = ({ posts }: Props) => {
                       <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
                       <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
                       <div className='p-4'>
-                        <Picture 
+                        <Picture
                           image={image}
                           viewportSize={viewportSize}
                           fullSize={true}

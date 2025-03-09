@@ -16,7 +16,7 @@ interface ImageOptions {
 const ViewportMappings: Record<ViewportType, { preview: number; full: number }> = {
   mobile: {
     preview: 400,
-    full: 750
+    full: 400
   },
   tablet: {
     preview: 450,

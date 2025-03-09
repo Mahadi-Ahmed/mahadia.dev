@@ -23,12 +23,7 @@ TODO:
 
 - [x] Fix font loading - download & use fonts locally
 
-
-- [] click on outside modal should close modal
-
-- [] Fix font loading
-- [] download & use fonts locally
-
+- [x] click on outside modal should close modal
 - [] add filtering
 
 ## 🧞 Commands
