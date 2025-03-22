@@ -13,7 +13,7 @@ export const post: GalleryPost = {
     },
     {
       src: 'sing-2/001757290012.jpg',
-      alt: 'sing cool building',
+      alt: 'sing cool mosque',
       metadata: {
         height: 2048,
         width: 3089,
