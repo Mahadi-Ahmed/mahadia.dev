@@ -1,0 +1,136 @@
+import { useState, useEffect } from 'react'
+import type { CarouselApi } from '@/components/ui/carousel'
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
+import type { GalleryImage, GalleryPost } from '@/content/gallery/types'
+import Picture from './Picture'
+
+interface Props {
+  posts: GalleryImage[];
+}
+
+const GalleryGridFlat = ({ posts }: Props) => {
+  const [selectedPost, setSelectedPost] = useState<{
+    image: GalleryImage | null
+    index: number
+  }>({
+    image: null,
+    index: 0
+  })
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [viewportSize, setViewportSize] = useState(0)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setViewportSize(window.innerWidth)
+    }
+  }, [])
+
+  //NOTE: Setup event listener for carousel navigation
+  useEffect(() => {
+    if (!api) return
+    api.on('select', () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
+
+  // NOTE: Set initial position for carousel
+  useEffect(() => {
+    if (api && selectedPost.image) {
+      api.scrollTo(selectedPost.index)
+      setCurrent(selectedPost.index)
+    }
+  }, [selectedPost, api])
+
+  return (
+    <>
+      <div className='columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4'>
+        {posts.map((post, index) => (
+          <div
+            key={post.alt}
+            className='break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer'
+            onClick={() => setSelectedPost({ image: post, index: index })}
+          >
+            <div className='p-2'>
+              <Picture
+                image={post}
+                viewportSize={viewportSize}
+                fullSize={false}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Dialog
+        open={selectedPost.image !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedPost({ image: null, index: selectedPost.index })
+          }
+        }}
+      >
+        <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'
+        >
+          {selectedPost && (
+            <div className='w-full h-full flex flex-col items-center justify-center relative'
+              onClick={(e) => {
+                const target = e.target as HTMLElement
+                const tagName = target.tagName.toLowerCase()
+
+                const ignoredElements = ['img', 'button']
+
+                if (ignoredElements.includes(tagName)) {
+                  return
+                }
+
+                setSelectedPost({ image: null, index: 0 })
+              }}
+            >
+              <Carousel
+                setApi={setApi}
+                className="w-full"
+                opts={{
+                  startIndex: selectedPost.index,
+                  loop: true
+                }}
+              >
+                <CarouselContent>
+                  {posts.map((image, index) => (
+                    <CarouselItem key={index} className="flex items-center justify-center">
+                      <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
+                      <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
+                      <div className='p-4'>
+                        <Picture
+                          image={image}
+                          viewportSize={viewportSize}
+                          fullSize={true}
+                          loadingBehaviour='fadein'
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+
+              <div className='absolute bottom-8 left-0 right-0 flex justify-center gap-2'>
+                {posts.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => api?.scrollTo(index)}
+                    className={`w-2 h-2 rounded-full transition-colors ${index === current ? 'bg-white' : 'bg-white/50'
+                      }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
+  )
+}
+
+export default GalleryGridFlat
