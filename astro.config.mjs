@@ -33,7 +33,6 @@ export default defineConfig({
               ]
             }
           ),
-          crawlDelay: 10
         }
       ],
       sitemap: true,
