@@ -7,9 +7,10 @@ interface Props {
   viewportSize: number
   fullSize: boolean
   loadingBehaviour?: 'crossfade' | 'fadein'
+  isLCP?: boolean
 }
 
-const Picture = ({ image, viewportSize, fullSize, loadingBehaviour = 'crossfade' }: Props) => {
+const Picture = ({ image, viewportSize, fullSize, loadingBehaviour = 'crossfade', isLCP = false }: Props) => {
   const [isLoaded, setLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
@@ -61,6 +62,21 @@ const Picture = ({ image, viewportSize, fullSize, loadingBehaviour = 'crossfade'
       return 'eager'
     }
     return 'lazy'
+  }
+
+  if (isLCP) {
+    return (
+      <img
+        src={srcUrl}
+        alt={image.alt}
+        className={imageClasses}
+        height={image.metadata.height}
+        width={image.metadata.width}
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+      />
+    )
   }
 
   if (loadingBehaviour === 'crossfade') {

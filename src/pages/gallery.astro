@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro'
 import { posts } from '@/content/gallery'
 import GalleryGrid from '../components/GalleryGrid'
 // import GalleryGridFlat from '../components/GallerGridFlat'
-
 // const flatPosts = posts.flatMap(post => post.images)
+
+const lcpPost = posts[0]
+const lcpImageSrc = lcpPost.images[0].src
 ---
 
-<Layout title="Mahadi Ahmed - Gallery">
+<Layout title="Mahadi Ahmed - Gallery" lcpImageUrl={`${import.meta.env.PUBLIC_R2_URL}/cdn-cgi/image/width=470,quality=70,format=auto,fit=scale-down/${lcpImageSrc}`}>
   <main class="max-w-9xl mx-auto px-6 py-12">
-
-    <GalleryGrid client:load posts={posts} />
-    <!-- <GalleryGridFlat client:load posts={flatPosts} /> -->
+    <GalleryGrid client:visible posts={posts} lcpImageSrc={lcpImageSrc} />
   </main>
 </Layout>

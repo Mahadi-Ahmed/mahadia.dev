@@ -7,9 +7,10 @@ import Picture from './Picture'
 
 interface Props {
   posts: GalleryPost[];
+  lcpImageSrc?: string
 }
 
-const GalleryGrid = ({ posts }: Props) => {
+const GalleryGrid = ({ posts, lcpImageSrc }: Props) => {
   const [selectedPost, setSelectedPost] = useState<GalleryPost | null>(null)
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
@@ -40,21 +41,40 @@ const GalleryGrid = ({ posts }: Props) => {
   return (
     <>
       <div className='columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4'>
-        {posts.map((post) => (
-          <div
-            key={post.id}
-            className='break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer'
-            onClick={() => setSelectedPost(post)}
-          >
-            <div className='p-2'>
-              <Picture
-                image={post.images[0]}
-                viewportSize={viewportSize}
-                fullSize={false}
-              />
+        {posts.map((post) => {
+          // Check if this post contains the LCP image
+          const isLCPImage = lcpImageSrc && post.images[0].src === lcpImageSrc
+
+          return (
+            <div
+              key={post.id}
+              className='break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer'
+              onClick={() => setSelectedPost(post)}
+            >
+              <div className='p-2'>
+                {isLCPImage ? (
+                  // Optimized rendering for LCP image
+                  <img
+                    src={`${import.meta.env.PUBLIC_R2_URL}/cdn-cgi/image/width=470,quality=70,format=auto,fit=scale-down/${post.images[0].src}`}
+                    alt={post.images[0].alt}
+                    width={post.images[0].metadata.width}
+                    height={post.images[0].metadata.height}
+                    className="w-full h-auto rounded-sm"
+                    loading="eager"
+                    decoding="async"
+                  />
+                ) : (
+                  // Regular Picture component for non-LCP images
+                  <Picture
+                    image={post.images[0]}
+                    viewportSize={viewportSize}
+                    fullSize={false}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       <Dialog open={selectedPost !== null} onOpenChange={() => setSelectedPost(null)}>
