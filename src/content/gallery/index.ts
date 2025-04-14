@@ -1,3 +1,4 @@
+import { post as egypt1 } from './egypt-1'
 import { post as bali1 } from './bali-1'
 import { post as bali2 } from './bali-2'
 import { post as bali3 } from './bali-3'
@@ -23,6 +24,7 @@ import { post as sthlmMara24 } from './sthlm-mara-24'
 import type { GalleryPost } from './types'
 
 export const posts: GalleryPost[] = [
+  egypt1,
   bali1,
   bali2,
   sing1,
