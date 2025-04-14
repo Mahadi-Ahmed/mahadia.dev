@@ -9,6 +9,11 @@ export const post: GalleryPost = {
       metadata: {
         width: 2048,
         height: 3089,
+      },
+      prioLoad: {
+        sm: false,
+        md: false,
+        lg: true
       }
     },
   ]
