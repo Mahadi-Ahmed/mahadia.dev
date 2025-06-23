@@ -24,7 +24,8 @@ TODO:
 - [x] Fix font loading - download & use fonts locally
 
 - [x] click on outside modal should close modal
-- [] add filtering
+- [ ] add filtering
+- [ ] add pwa support
 
 ## 🧞 Commands
 
