@@ -32,9 +32,9 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.8.3"
   },
-  "volta": {
-    "node": "23.6.1",
-    "yarn": "4.6.0"
+  "packageManager": "yarn@4.6.0",
+  "engines": {
+    "node": "23.6.1"
   },
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "^6.10.0",
