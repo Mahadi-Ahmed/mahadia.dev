@@ -90,6 +90,5 @@ export const getImageUrl = (
     .join(',')
 
   // Format: https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
-  const sourceImage = `${IMAGE_DOMAIN}/${path}`
-  return `${IMAGE_DOMAIN}/cdn-cgi/image/${optionsString}/${sourceImage}`
+  return `${IMAGE_DOMAIN}/cdn-cgi/image/${optionsString}/${path}`
 }
