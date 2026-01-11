@@ -57,7 +57,7 @@ const GalleryGridFlat = ({ posts }: Props) => {
       <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
         {posts.map((post, index) => (
           <div
-            key={post.alt}
+            key={index}
             className="break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer"
             onClick={() => setSelectedPost({ image: post, index: index })}
           >

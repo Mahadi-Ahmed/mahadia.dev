@@ -77,7 +77,6 @@ const Picture = ({
       <div className="relative w-full h-auto">
         <img
           src={thumbnailUrl}
-          ref={imgRef}
           alt={image.alt}
           className={`${imageClasses} absolute inset-0 transition-opacity  ${isLoaded ? 'opacity-0 duration-300' : 'opacity-100 animate-pulse'}`}
           height={image.metadata.height}
