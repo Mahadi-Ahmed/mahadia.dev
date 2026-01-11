@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'bali rice field',
       metadata: {
         width: 2232,
-        height: 1511,
+        height: 1511
       },
       prioLoad: {
         sm: true,
@@ -21,7 +21,7 @@ export const post: GalleryPost = {
       alt: 'bali mountain',
       metadata: {
         width: 2232,
-        height: 1511,
+        height: 1511
       }
     }
   ]

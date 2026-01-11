@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react'
 import type { CarouselApi } from '@/components/ui/carousel'
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription
+} from '@/components/ui/dialog'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem
+} from '@/components/ui/carousel'
 import type { GalleryPost } from '@/content/gallery/types'
 import Picture from './Picture'
 
 interface Props {
-  posts: GalleryPost[];
+  posts: GalleryPost[]
 }
 
 const GalleryGrid = ({ posts }: Props) => {
@@ -14,7 +23,6 @@ const GalleryGrid = ({ posts }: Props) => {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
   const [viewportSize, setViewportSize] = useState(0)
-
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -39,14 +47,14 @@ const GalleryGrid = ({ posts }: Props) => {
 
   return (
     <>
-      <div className='columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4'>
-        {posts.map((post) => (
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        {posts.map(post => (
           <div
             key={post.id}
-            className='break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer'
+            className="break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer"
             onClick={() => setSelectedPost(post)}
           >
-            <div className='p-2'>
+            <div className="p-2">
               <Picture
                 image={post.images[0]}
                 viewportSize={viewportSize}
@@ -57,12 +65,15 @@ const GalleryGrid = ({ posts }: Props) => {
         ))}
       </div>
 
-      <Dialog open={selectedPost !== null} onOpenChange={() => setSelectedPost(null)}>
-        <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'
-        >
+      <Dialog
+        open={selectedPost !== null}
+        onOpenChange={() => setSelectedPost(null)}
+      >
+        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90">
           {selectedPost && (
-            <div className='w-full h-full flex flex-col items-center justify-center relative'
-              onClick={(e) => {
+            <div
+              className="w-full h-full flex flex-col items-center justify-center relative"
+              onClick={e => {
                 const target = e.target as HTMLElement
                 const tagName = target.tagName.toLowerCase()
 
@@ -78,15 +89,20 @@ const GalleryGrid = ({ posts }: Props) => {
               <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
                   {selectedPost.images.map((image, index) => (
-                    <CarouselItem key={index} className="flex items-center justify-center">
-                      <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
-                      <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
-                      <div className='p-4'>
+                    <CarouselItem
+                      key={index}
+                      className="flex items-center justify-center"
+                    >
+                      <DialogTitle className="sr-only">{image.alt}</DialogTitle>
+                      <DialogDescription className="sr-only">
+                        {image.alt}
+                      </DialogDescription>
+                      <div className="p-4">
                         <Picture
                           image={image}
                           viewportSize={viewportSize}
                           fullSize={true}
-                          loadingBehaviour='fadein'
+                          loadingBehaviour="fadein"
                         />
                       </div>
                     </CarouselItem>
@@ -94,13 +110,14 @@ const GalleryGrid = ({ posts }: Props) => {
                 </CarouselContent>
               </Carousel>
 
-              <div className='absolute bottom-8 left-0 right-0 flex justify-center gap-2'>
+              <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2">
                 {selectedPost.images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${index === current ? 'bg-white' : 'bg-white/50'
-                      }`}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === current ? 'bg-white' : 'bg-white/50'
+                    }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}

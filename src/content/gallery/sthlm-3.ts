@@ -8,9 +8,8 @@ export const post: GalleryPost = {
       alt: 'architecture',
       metadata: {
         height: 4160,
-        width: 6240,
+        width: 6240
       }
-    },
+    }
   ]
 }
-

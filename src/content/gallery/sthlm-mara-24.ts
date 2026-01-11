@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'Oh My!',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
     },
     {
@@ -16,7 +16,7 @@ export const post: GalleryPost = {
       alt: 'My Bibnumber',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
     },
     {
@@ -24,7 +24,7 @@ export const post: GalleryPost = {
       alt: 'yearning',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
     },
     {
@@ -32,7 +32,7 @@ export const post: GalleryPost = {
       alt: 'Harbour district',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
     },
     {
@@ -40,7 +40,7 @@ export const post: GalleryPost = {
       alt: 'Double up',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
     },
     {
@@ -48,7 +48,7 @@ export const post: GalleryPost = {
       alt: 'Joy of Photography',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
     },
     {
@@ -56,7 +56,7 @@ export const post: GalleryPost = {
       alt: 'Summer Love',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
     },
     {
@@ -64,9 +64,8 @@ export const post: GalleryPost = {
       alt: 'Change',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
-    },
+    }
   ]
 }
-

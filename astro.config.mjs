@@ -1,12 +1,12 @@
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config'
+import react from '@astrojs/react'
+import tailwind from '@astrojs/tailwind'
+import sitemap from '@astrojs/sitemap'
 
-import robotsTxt from 'astro-robots-txt';
+import robotsTxt from 'astro-robots-txt'
 
-const site = process.env.CF_PAGES_URL || 'https://mahadia.dev';
-const isPreview = process.env.CF_PAGES_BRANCH !== 'main';
+const site = process.env.CF_PAGES_URL || 'https://mahadia.dev'
+const isPreview = process.env.CF_PAGES_BRANCH !== 'main'
 
 console.log('building for site: ', site)
 // https://astro.build/config
@@ -15,7 +15,7 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind({
-      applyBaseStyles: false,
+      applyBaseStyles: false
     }),
     sitemap(),
     robotsTxt({
@@ -25,14 +25,9 @@ export default defineConfig({
           ...(isPreview
             ? { disallow: '/' }
             : {
-              allow: ['/', '/gallery'],
-              disallow: [
-                '/components/',
-                '/layouts/',
-                '/styles/'
-              ]
-            }
-          ),
+                allow: ['/', '/gallery'],
+                disallow: ['/components/', '/layouts/', '/styles/']
+              })
         }
       ],
       sitemap: true,
@@ -52,14 +47,14 @@ export default defineConfig({
       terserOptions: {
         // Remove console logs in production
         compress: {
-          drop_console: true,
+          drop_console: true
         },
         // Improve code output
         format: {
           // Remove comments
           comments: false,
           // Make output more readable if needed
-          beautify: false,
+          beautify: false
         },
         // Keep class names for React components
         keep_classnames: true,
@@ -83,4 +78,4 @@ export default defineConfig({
       include: ['react', 'react-dom']
     }
   }
-});
+})

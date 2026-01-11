@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'hawa mehel',
       metadata: {
         width: 6240,
-        height: 4160,
+        height: 4160
       },
       prioLoad: {
         sm: false,
@@ -21,9 +21,8 @@ export const post: GalleryPost = {
       alt: 'hawa mehel full',
       metadata: {
         width: 6240,
-        height: 4160,
+        height: 4160
       }
     }
   ]
 }
-

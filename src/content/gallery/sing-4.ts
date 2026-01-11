@@ -8,9 +8,8 @@ export const post: GalleryPost = {
       alt: 'singapore Buddha Tooth relic temple',
       metadata: {
         height: 2232,
-        width: 1511,
+        width: 1511
       }
-    },
+    }
   ]
 }
-

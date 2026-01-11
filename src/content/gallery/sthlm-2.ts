@@ -8,9 +8,8 @@ export const post: GalleryPost = {
       alt: 'Strawberry arena',
       metadata: {
         height: 4160,
-        width: 6240,
+        width: 6240
       }
-    },
+    }
   ]
 }
-

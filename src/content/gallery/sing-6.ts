@@ -8,10 +8,8 @@ export const post: GalleryPost = {
       alt: 'basketball hoop highrise apartments',
       metadata: {
         height: 6240,
-        width: 4160,
+        width: 4160
       }
-    },
+    }
   ]
 }
-
-

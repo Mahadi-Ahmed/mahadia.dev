@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'india textured wall',
       metadata: {
         width: 6078,
-        height: 3711,
+        height: 3711
       }
     },
     {
@@ -16,9 +16,8 @@ export const post: GalleryPost = {
       alt: 'india walls & birds',
       metadata: {
         width: 6240,
-        height: 4160,
+        height: 4160
       }
     }
   ]
 }
-

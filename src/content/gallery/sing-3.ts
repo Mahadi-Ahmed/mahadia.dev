@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'basketball hoop',
       metadata: {
         height: 2048,
-        width: 3089,
+        width: 3089
       }
     },
     {
@@ -16,7 +16,7 @@ export const post: GalleryPost = {
       alt: 'basketball court reflection',
       metadata: {
         height: 2048,
-        width: 3089,
+        width: 3089
       }
     },
     {
@@ -24,9 +24,8 @@ export const post: GalleryPost = {
       alt: 'cool chairs',
       metadata: {
         height: 2048,
-        width: 3089,
+        width: 3089
       }
     }
   ]
 }
-

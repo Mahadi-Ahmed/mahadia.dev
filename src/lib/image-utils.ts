@@ -1,19 +1,22 @@
 const IMAGE_DOMAIN = import.meta.env.PUBLIC_R2_URL
 
-type ImageSize = 'tinyThumbnail' | 'thumbnail' | 'full';
-type ViewportType = 'mobile' | 'tablet' | 'desktop' | 'xlDesktop';
+type ImageSize = 'tinyThumbnail' | 'thumbnail' | 'full'
+type ViewportType = 'mobile' | 'tablet' | 'desktop' | 'xlDesktop'
 
 interface ImageOptions {
-  width?: number;
-  height?: number;
-  quality?: number;
-  format?: string;
-  fit?: 'scale-down' | 'contain' | 'cover' | 'crop' | 'pad';
-  blur?: number;
+  width?: number
+  height?: number
+  quality?: number
+  format?: string
+  fit?: 'scale-down' | 'contain' | 'cover' | 'crop' | 'pad'
+  blur?: number
   'cf-cache-ttl'?: number
 }
 
-const ViewportMappings: Record<ViewportType, { preview: number; full: number }> = {
+const ViewportMappings: Record<
+  ViewportType,
+  { preview: number; full: number }
+> = {
   mobile: {
     preview: 400,
     full: 400
@@ -39,12 +42,19 @@ export const getViewportType = (width: number): ViewportType => {
   return 'xlDesktop'
 }
 
-const getImageWidth = (size: 'preview' | 'full', viewportWidth: number): number => {
+const getImageWidth = (
+  size: 'preview' | 'full',
+  viewportWidth: number
+): number => {
   const viewport = getViewportType(viewportWidth)
   return ViewportMappings[viewport][size]
 }
 
-export const getImageUrl = (path: string, size: ImageSize, viewportSize: number): string => {
+export const getImageUrl = (
+  path: string,
+  size: ImageSize,
+  viewportSize: number
+): string => {
   const CACHE_TTL = 2592000
 
   const defaults: Record<ImageSize, ImageOptions> = {

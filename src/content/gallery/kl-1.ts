@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'petronas towers',
       metadata: {
         width: 2048,
-        height: 3089,
+        height: 3089
       }
     },
     {
@@ -21,4 +21,3 @@ export const post: GalleryPost = {
     }
   ]
 }
-

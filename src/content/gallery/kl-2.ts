@@ -8,14 +8,13 @@ export const post: GalleryPost = {
       alt: 'kl tower',
       metadata: {
         height: 4160,
-        width: 6240,
+        width: 6240
       },
       prioLoad: {
         sm: false,
         md: true,
         lg: false
       }
-    },
+    }
   ]
 }
-

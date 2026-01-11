@@ -9,12 +9,21 @@ interface Props {
   loadingBehaviour?: 'crossfade' | 'fadein'
 }
 
-const Picture = ({ image, viewportSize, fullSize, loadingBehaviour = 'crossfade' }: Props) => {
+const Picture = ({
+  image,
+  viewportSize,
+  fullSize,
+  loadingBehaviour = 'crossfade'
+}: Props) => {
   const [isLoaded, setLoaded] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
   const thumbnailUrl = getImageUrl(image.src, 'tinyThumbnail', viewportSize)
-  const srcUrl = getImageUrl(image.src, fullSize ? 'full' : 'thumbnail', viewportSize)
+  const srcUrl = getImageUrl(
+    image.src,
+    fullSize ? 'full' : 'thumbnail',
+    viewportSize
+  )
 
   useEffect(() => {
     // NOTE: Check if the image is already loaded from cache
@@ -109,4 +118,3 @@ const Picture = ({ image, viewportSize, fullSize, loadingBehaviour = 'crossfade'
 }
 
 export default Picture
-

@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'bali waterfall',
       metadata: {
         width: 2232,
-        height: 1511,
+        height: 1511
       }
     },
     {
@@ -16,7 +16,7 @@ export const post: GalleryPost = {
       alt: 'angels bilabong',
       metadata: {
         width: 1511,
-        height: 2232,
+        height: 2232
       }
     }
   ]

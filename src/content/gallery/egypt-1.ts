@@ -8,13 +8,13 @@ export const post: GalleryPost = {
       alt: 'beduin supermarket',
       metadata: {
         width: 6240,
-        height: 4160,
+        height: 4160
       },
       prioLoad: {
         sm: true,
         md: true,
         lg: true
       }
-    },
+    }
   ]
 }

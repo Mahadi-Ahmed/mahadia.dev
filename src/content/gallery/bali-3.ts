@@ -8,8 +8,8 @@ export const post: GalleryPost = {
       alt: 'bali moody beach',
       metadata: {
         width: 6240,
-        height: 4160,
+        height: 4160
       }
-    },
+    }
   ]
 }

@@ -8,14 +8,13 @@ export const post: GalleryPost = {
       alt: 'sing architecture',
       metadata: {
         width: 2048,
-        height: 3089,
+        height: 3089
       },
       prioLoad: {
         sm: false,
         md: false,
         lg: true
       }
-    },
+    }
   ]
 }
-

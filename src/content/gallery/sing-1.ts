@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'sing hawker center night',
       metadata: {
         height: 2048,
-        width: 3089,
+        width: 3089
       }
     },
     {
@@ -16,9 +16,8 @@ export const post: GalleryPost = {
       alt: 'sing street food night',
       metadata: {
         height: 2048,
-        width: 3089,
+        width: 3089
       }
     }
   ]
 }
-

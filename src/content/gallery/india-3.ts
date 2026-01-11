@@ -8,8 +8,8 @@ export const post: GalleryPost = {
       alt: 'india wall',
       metadata: {
         width: 2795,
-        height: 3176,
+        height: 3176
       }
-    },
+    }
   ]
 }

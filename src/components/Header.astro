@@ -1,20 +1,24 @@
 ---
 import { Image } from 'astro:assets'
-import { Github } from 'lucide-astro';
+import { Github } from 'lucide-astro'
 ---
 
 <header>
   <nav class="flex">
     <div class="flex items-center justify-between w-full m-auto p-4">
       <a href="/" class="flex items-center">
-        <Image src="/ma-logo.svg" alt="mahadia logo" width={35} height={40}/>
+        <Image src="/ma-logo.svg" alt="mahadia logo" width={35} height={40} />
       </a>
       <div class="flex gap-2">
         <a href="/">Home</a>
         <a href="/gallery">Gallery</a>
       </div>
       <div class="flex gap-4 text-current">
-        <a href="https://github.com/Mahadi-Ahmed" target="_blank" aria-label="link to github profile">
+        <a
+          href="https://github.com/Mahadi-Ahmed"
+          target="_blank"
+          aria-label="link to github profile"
+        >
           <Github />
         </a>
       </div>

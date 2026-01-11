@@ -8,9 +8,8 @@ export const post: GalleryPost = {
       alt: 'sthlm by foto submission - traffic',
       metadata: {
         height: 1776,
-        width: 1184,
+        width: 1184
       }
-    },
+    }
   ]
 }
-

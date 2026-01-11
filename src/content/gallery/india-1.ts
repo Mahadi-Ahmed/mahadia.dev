@@ -8,7 +8,7 @@ export const post: GalleryPost = {
       alt: 'tuk tuk',
       metadata: {
         width: 6240,
-        height: 4160,
+        height: 4160
       }
     },
     {
@@ -16,8 +16,8 @@ export const post: GalleryPost = {
       alt: 'framed tuk tuk',
       metadata: {
         width: 6240,
-        height: 4160,
+        height: 4160
       }
-    },
+    }
   ]
 }

@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react'
 import type { CarouselApi } from '@/components/ui/carousel'
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription
+} from '@/components/ui/dialog'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem
+} from '@/components/ui/carousel'
 import type { GalleryImage, GalleryPost } from '@/content/gallery/types'
 import Picture from './Picture'
 
 interface Props {
-  posts: GalleryImage[];
+  posts: GalleryImage[]
 }
 
 const GalleryGridFlat = ({ posts }: Props) => {
@@ -45,14 +54,14 @@ const GalleryGridFlat = ({ posts }: Props) => {
 
   return (
     <>
-      <div className='columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4'>
+      <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
         {posts.map((post, index) => (
           <div
             key={post.alt}
-            className='break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer'
+            className="break-inside-avoid rounded-lg bg-card hover:shadow-lg transition-shadow cursor-pointer"
             onClick={() => setSelectedPost({ image: post, index: index })}
           >
-            <div className='p-2'>
+            <div className="p-2">
               <Picture
                 image={post}
                 viewportSize={viewportSize}
@@ -65,17 +74,17 @@ const GalleryGridFlat = ({ posts }: Props) => {
 
       <Dialog
         open={selectedPost.image !== null}
-        onOpenChange={(open) => {
+        onOpenChange={open => {
           if (!open) {
             setSelectedPost({ image: null, index: selectedPost.index })
           }
         }}
       >
-        <DialogContent className='max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90'
-        >
+        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90">
           {selectedPost && (
-            <div className='w-full h-full flex flex-col items-center justify-center relative'
-              onClick={(e) => {
+            <div
+              className="w-full h-full flex flex-col items-center justify-center relative"
+              onClick={e => {
                 const target = e.target as HTMLElement
                 const tagName = target.tagName.toLowerCase()
 
@@ -98,15 +107,20 @@ const GalleryGridFlat = ({ posts }: Props) => {
               >
                 <CarouselContent>
                   {posts.map((image, index) => (
-                    <CarouselItem key={index} className="flex items-center justify-center">
-                      <DialogTitle className='sr-only'>{image.alt}</DialogTitle>
-                      <DialogDescription className='sr-only'>{image.alt}</DialogDescription>
-                      <div className='p-4'>
+                    <CarouselItem
+                      key={index}
+                      className="flex items-center justify-center"
+                    >
+                      <DialogTitle className="sr-only">{image.alt}</DialogTitle>
+                      <DialogDescription className="sr-only">
+                        {image.alt}
+                      </DialogDescription>
+                      <div className="p-4">
                         <Picture
                           image={image}
                           viewportSize={viewportSize}
                           fullSize={true}
-                          loadingBehaviour='fadein'
+                          loadingBehaviour="fadein"
                         />
                       </div>
                     </CarouselItem>
@@ -114,13 +128,14 @@ const GalleryGridFlat = ({ posts }: Props) => {
                 </CarouselContent>
               </Carousel>
 
-              <div className='absolute bottom-8 left-0 right-0 flex justify-center gap-2'>
+              <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2">
                 {posts.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => api?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${index === current ? 'bg-white' : 'bg-white/50'
-                      }`}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === current ? 'bg-white' : 'bg-white/50'
+                    }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
