@@ -11,7 +11,7 @@ import {
   CarouselContent,
   CarouselItem
 } from '@/components/ui/carousel'
-import type { GalleryImage, GalleryPost } from '@/content/gallery/types'
+import type { GalleryImage } from '@/content/gallery/types'
 import Picture from './Picture'
 
 interface Props {
