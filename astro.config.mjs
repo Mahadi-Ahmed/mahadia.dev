@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap'
 
 import robotsTxt from 'astro-robots-txt'
@@ -14,9 +14,6 @@ export default defineConfig({
   site,
   integrations: [
     react(),
-    tailwind({
-      applyBaseStyles: false
-    }),
     sitemap(),
     robotsTxt({
       policy: [
@@ -41,6 +38,7 @@ export default defineConfig({
     inlineStylesheets: 'auto'
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       // Enable minification with specific settings
       minify: 'terser',

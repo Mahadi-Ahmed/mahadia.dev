@@ -80,7 +80,7 @@ const GalleryGridFlat = ({ posts }: Props) => {
           }
         }}
       >
-        <DialogContent className="max-w-[100vw] max-h-[100vh] w-full h-full p-0 bg-background/90">
+        <DialogContent className="max-w-[100vw] max-h-screen w-full h-full p-0 bg-background/90">
           {selectedPost && (
             <div
               className="w-full h-full flex flex-col items-center justify-center relative"
