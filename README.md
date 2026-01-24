@@ -1,9 +1,10 @@
 # mahadia.dev
+
 new domain for personal website
 
 TODO:
 - [x] Add astro
-- [x] Add stage deployment 
+- [x] Add stage deployment
 - [x] deploy old website to prod
 - [x] add a navbar
 - [x] add tailwind, shadcn
@@ -17,7 +18,7 @@ TODO:
 - [x] deploy astro version
 
 - [x] Pretty load pics
-    - [x] Create a img component that will load 20px first then the real one with animations
+  - [x] Create a img component that will load 20px first then the real one with animations
 
 - [x] upgrade astro
 
@@ -31,13 +32,13 @@ TODO:
 
 All commands are from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `yarn install`             | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `yarn install`      | Installs dependencies                            |
+| `yarn dev`          | Starts local dev server at `localhost:4321`      |
+| `yarn build`        | Build your production site to `./dist/`          |
+| `yarn preview`      | Preview your build locally, before deploying     |
+| `yarn astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `yarn astro --help` | Get help using the Astro CLI                     |
 
 ## 👀 Want to learn more?
