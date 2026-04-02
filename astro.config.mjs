@@ -58,17 +58,6 @@ export default defineConfig({
         keep_classnames: true,
         // Keep function names for debugging
         keep_fnames: true
-      },
-      // Split code into smaller chunks
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            // Group React-related code
-            react: ['react', 'react-dom'],
-            // Group UI components
-            components: ['/src/components']
-          }
-        }
       }
     },
     // Enable build-time optimizations
