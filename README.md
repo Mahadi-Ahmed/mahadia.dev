@@ -25,6 +25,7 @@ TODO:
 - [x] Fix font loading - download & use fonts locally
 
 - [x] click on outside modal should close modal
+- [ ] Look into shadcn mcp for claude code
 - [ ] add filtering
 - [ ] add pwa support
 
